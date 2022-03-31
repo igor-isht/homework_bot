@@ -106,7 +106,7 @@ def main():
 
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     current_timestamp = int(time.time())
-    previous_response = ''
+    previous_response = {}
     previous_error_message = ''
 
     while True:
@@ -120,8 +120,8 @@ def main():
                 logging.info(f'Бот отправил сообщение {message}')
             else:
                 logging.debug('Новые статусы/работы отсутствуют')
-            time.sleep(RETRY_TIME)
             current_timestamp = int(time.time())
+            time.sleep(RETRY_TIME)
 
         except Exception as error:
             error_message = f'Сбой в работе программы: {error}'
