@@ -86,7 +86,7 @@ def parse_status(homework):
 
 
 def check_tokens():
-    """Проверяет наличие токенов"""
+    """Проверяет наличие токенов."""
     if PRACTICUM_TOKEN and TELEGRAM_TOKEN and TELEGRAM_CHAT_ID:
         return True
     else:
