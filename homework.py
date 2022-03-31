@@ -106,7 +106,7 @@ def main():
 
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     current_timestamp = int(time.time())
-    previous_response = {}
+    previous_response = {'homeworks': [], 'current_date': current_timestamp}
     previous_error_message = ''
 
     while True:
