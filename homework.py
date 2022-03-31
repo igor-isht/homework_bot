@@ -125,7 +125,7 @@ def main():
 
         except Exception as error:
             error_message = f'Сбой в работе программы: {error}'
-            logging.error(error, exc_info=True)
+            logging.error(error_message, exc_info=True)
             if error_message != previous_error_message:
                 previous_error_message = error_message
                 send_message(bot, error_message)
