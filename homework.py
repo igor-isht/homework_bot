@@ -128,7 +128,7 @@ def main():
             logging.error(error, exc_info=True)
             if error_message != previous_error_message:
                 previous_error_message = error_message
-                send_message(bot, message)
+                send_message(bot, error_message)
             time.sleep(RETRY_TIME)
         else:
 
