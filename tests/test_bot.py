@@ -523,6 +523,7 @@ class TestHomework:
                 return data
 
             response.json = valid_response_json
+            
             return response
 
         monkeypatch.setattr(requests, 'get', mock_response_get)
@@ -531,6 +532,7 @@ class TestHomework:
 
         func_name = 'check_response'
         response = homework.get_api_answer(current_timestamp)
+        print(response)
         try:
             status = homework.check_response(response)
         except TypeError:
