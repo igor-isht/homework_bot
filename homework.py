@@ -81,13 +81,10 @@ def parse_status(homework) -> str:
 
 def check_tokens() -> bool:
     """Проверяет наличие токенов."""
-    if all([PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID]):
-        return True
-    else:
-        return False
+    return all([PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID])
 
 
-def main():
+def main() -> None:
     """Основная логика работы бота."""
     if not check_tokens():
         message = ('отсутствует одна или несколько обязательных переменных '
