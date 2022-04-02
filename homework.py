@@ -52,15 +52,17 @@ def get_api_answer(current_timestamp) -> dict:
 
 def check_response(response) -> list:
     """Принимает ответ от API практикума и возвращает список работ."""
-    # Тут валятся тесты
-    # if not isinstance(response, dict):
-    #    raise Exception('ответ от API не является словарем')
-    homeworks = response['homeworks']
-    if not isinstance(homeworks, list):
-        raise Exception('при запросе д/з под ключом "homeworks" '
-                        'значения не в виде списка')
-    else:
-        return homeworks
+    if not isinstance(response, dict):
+        raise TypeError('ответ от API не является словарем')
+    if response['homeworks']:
+        homeworks = response['homeworks']
+        if not response['current_date']:
+            raise KeyError('отсутствует ключ "current_date"')
+        if not isinstance(homeworks, list):
+            raise Exception('при запросе д/з под ключом "homeworks" '
+                            'значения не в виде списка')
+        else:
+            return homeworks
 
 
 def parse_status(homework) -> str:
