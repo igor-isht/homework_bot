@@ -55,8 +55,6 @@ def check_response(response) -> list:
     # Тут валятся тесты
     # if not isinstance(response, dict):
     #    raise Exception('ответ от API не является словарем')
-    if not response['homeworks']:
-        return False
     homeworks = response['homeworks']
     if not isinstance(homeworks, list):
         raise Exception('при запросе д/з под ключом "homeworks" '
