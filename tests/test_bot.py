@@ -532,7 +532,6 @@ class TestHomework:
 
         func_name = 'check_response'
         response = homework.get_api_answer(current_timestamp)
-        print(response)
         try:
             status = homework.check_response(response)
         except TypeError:

@@ -52,10 +52,9 @@ def get_api_answer(current_timestamp) -> dict:
 
 def check_response(response) -> list:
     """Принимает ответ от API практикума и возвращает список работ."""
+    # Тут валятся тесты
     # if not isinstance(response, dict):
     #    raise Exception('ответ от API не является словарем')
-    if response == {}:
-        raise Exception('ответ от API содержит пустой словарь')
     if not response['homeworks']:
         return False
     homeworks = response['homeworks']
