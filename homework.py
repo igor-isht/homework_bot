@@ -108,7 +108,6 @@ def main() -> None:
                 initial_homeworks = homeworks
                 message = parse_status(homeworks[0])
                 send_message(bot, message)
-                print(message)
                 logging.info(f'Бот отправил сообщение {message}')
             else:
                 logging.debug('Новые статусы/работы отсутствуют')
@@ -116,7 +115,6 @@ def main() -> None:
 
         except Exception as error:
             error_message = f'Сбой в работе программы: {error}'
-            print(error_message)
             logging.error(error_message, exc_info=True)
             if error_message != previous_error_message:
                 previous_error_message = error_message
@@ -126,6 +124,9 @@ def main() -> None:
 
 
 if __name__ == '__main__':
+    
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
     # Создание и настройка логгера
     logger = logging.getLogger(__name__)
