@@ -3,10 +3,10 @@ import time
 import os
 import telegram
 import logging
-from flask import Flask
+#from flask import Flask
 #from dotenv import load_dotenv
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 # Подгрузка токенов
 #load_dotenv()
@@ -131,8 +131,8 @@ def main() -> None:
 
 if __name__ == '__main__':
     
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    #port = int(os.environ.get('PORT', 5000))
+    #app.run(host='0.0.0.0', port=port)
     
     # Создание и настройка логгера
     logger = logging.getLogger(__name__)
