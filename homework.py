@@ -3,19 +3,14 @@ import time
 import os
 import telegram
 import logging
-#from flask import Flask
 from dotenv import load_dotenv
 
-#app = Flask(__name__)
 
 # Подгрузка токенов
 load_dotenv()
 PRACTICUM_TOKEN = os.getenv('PRACTICUM_TOKEN')
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
-#PRACTICUM_TOKEN = os.environ['PRACTICUM_TOKEN']
-#TELEGRAM_TOKEN = os.environ['TELEGRAM_TOKEN']
-#TELEGRAM_CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
 
 RETRY_TIME = 600
 ENDPOINT = 'https://practicum.yandex.ru/api/user_api/homework_statuses/'
@@ -117,6 +112,7 @@ def main() -> None:
                 send_message(bot, message)
                 logging.info(f'Бот отправил сообщение {message}')
             else:
+                 print('else')
                 logging.debug('Новые статусы/работы отсутствуют')
             current_timestamp = int(time.time())
 
