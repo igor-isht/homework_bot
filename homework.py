@@ -110,6 +110,7 @@ def main() -> None:
         try:
             response = get_api_answer(current_timestamp)
             homeworks = check_response(response)
+            print(homeworks)
             if homeworks != initial_homeworks and homeworks:
                 initial_homeworks = homeworks
                 message = parse_status(homeworks[0])
