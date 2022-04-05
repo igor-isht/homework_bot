@@ -3,14 +3,14 @@ import time
 import os
 import telegram
 import logging
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 
 # Подгрузка токенов
-load_dotenv()
-PRACTICUM_TOKEN = os.getenv('PRACTICUM_TOKEN')
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
-TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+#load_dotenv()
+#PRACTICUM_TOKEN = os.getenv('PRACTICUM_TOKEN')
+#TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+#TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
 RETRY_TIME = 600
 ENDPOINT = 'https://practicum.yandex.ru/api/user_api/homework_statuses/'
@@ -125,9 +125,6 @@ def main() -> None:
 
 if __name__ == '__main__':
     
-    port = int(os.environ.get('PORT', 5000))
-    homework.run(host='0.0.0.0', port=port)
-
     # Создание и настройка логгера
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
