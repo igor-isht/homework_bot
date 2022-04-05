@@ -112,7 +112,7 @@ def main() -> None:
                 send_message(bot, message)
                 logging.info(f'Бот отправил сообщение {message}')
             else:
-                 print('else')
+                print('else')
                 logging.debug('Новые статусы/работы отсутствуют')
             current_timestamp = int(time.time())
 
