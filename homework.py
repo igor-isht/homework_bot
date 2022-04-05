@@ -89,7 +89,7 @@ def check_tokens() -> bool:
     return all([PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID])
 
 
-@app.route('/')
+#@app.route('/')
 def main() -> None:
     """Основная логика работы бота."""
     if not check_tokens():
