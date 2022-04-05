@@ -4,12 +4,12 @@ import os
 import telegram
 import logging
 #from flask import Flask
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 #app = Flask(__name__)
 
 # Подгрузка токенов
-#load_dotenv()
+load_dotenv()
 #PRACTICUM_TOKEN = os.getenv('PRACTICUM_TOKEN')
 #TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 #TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
