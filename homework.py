@@ -28,7 +28,7 @@ def send_message(bot, message):
     try:
         bot.send_message(TELEGRAM_CHAT_ID, message)
     except telegram.TelegramError as error:
-        logging.error(error, exc_info=True)
+        logger.error(error, exc_info=True)
 
 
 def get_api_answer(current_timestamp) -> dict:
@@ -84,13 +84,12 @@ def check_tokens() -> bool:
     return all([PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID])
 
 
-#@app.route('/')
 def main() -> None:
     """Основная логика работы бота."""
     if not check_tokens():
         message = ('отсутствует одна или несколько обязательных переменных '
                    'окружения. Программа принудительно остановлена.')
-        logging.critical(message)
+        logger.critical(message)
         if TELEGRAM_CHAT_ID:
             bot = telegram.Bot(token=TELEGRAM_TOKEN)
             send_message(bot, message)
@@ -105,20 +104,20 @@ def main() -> None:
         try:
             response = get_api_answer(current_timestamp)
             homeworks = check_response(response)
-            print(homeworks)
             if homeworks != initial_homeworks and homeworks:
                 initial_homeworks = homeworks
                 message = parse_status(homeworks[0])
                 send_message(bot, message)
-                logging.info(f'Бот отправил сообщение {message}')
+                print(message)
+                logger.info(f'Бот отправил сообщение {message}')
             else:
-                print('else')
-                logging.debug('Новые статусы/работы отсутствуют')
+                logger.debug('Новые статусы/работы отсутствуют')
             current_timestamp = int(time.time())
 
         except Exception as error:
             error_message = f'Сбой в работе программы: {error}'
-            logging.error(error_message, exc_info=True)
+            print(error_message)
+            logger.error(error_message, exc_info=True)
             if error_message != previous_error_message:
                 previous_error_message = error_message
                 send_message(bot, error_message)
@@ -127,10 +126,7 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    
-    #port = int(os.environ.get('PORT', 5000))
-    #app.run(host='0.0.0.0', port=port)
-    
+
     # Создание и настройка логгера
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
