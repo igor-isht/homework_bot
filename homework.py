@@ -97,18 +97,17 @@ def main() -> None:
 
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     previous_error_message = ''
-    initial_homeworks = []
+    previous_homeworks = []
 
     while True:
         try:
             current_timestamp = int(time.time())
             response = get_api_answer(current_timestamp)
             homeworks = check_response(response)
-            if homeworks != initial_homeworks and homeworks:
-                initial_homeworks = homeworks
+            if homeworks != previous_homeworks and homeworks:
+                previous_homeworks = homeworks
                 message = parse_status(homeworks[0])
                 send_message(bot, message)
-                print(message)
                 logger.info(f'Бот отправил сообщение {message}')
             else:
                 logger.debug('Новые статусы/работы отсутствуют')
